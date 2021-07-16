@@ -1,0 +1,97 @@
+@import "../../../styles.scss";
+
+/* SIDENAV */
+.sidenav {
+  position: relative;
+  overflow-y: hidden;
+
+  padding: 51px 56px;
+  height: 100%;
+  background-color: $white;
+}
+
+.explore {
+  font-size: 2rem;
+  margin: 57px 0px 44.24px;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.logo-detail {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: $yellow;
+}
+
+.logo-name {
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+  margin-left: -20px;
+  font-weight: 600;
+}
+
+/* BUTTON TOGGLE */
+.btn-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 30vh;
+  cursor: pointer;
+
+  border-radius: 3px 0px 0px 3px;
+
+  padding: 2px;
+  border: 1px solid $gray;
+  background-color: transparent;
+}
+
+.sidenav-hidden {
+  margin-left: -226.36px;
+
+  .btn-toggle {
+    border-radius: 0px 3px 3px 0px;
+  }
+}
+
+/* NAVIGATION */
+.icon {
+  margin-right: 10.1px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+}
+
+nav li {
+  display: flex;
+  align-items: center;
+  list-style: none;
+
+  & + li {
+    margin-top: 27.42px;
+  }
+}
+
+.help-item {
+  align-self: flex-end;
+  justify-self: flex-end;
+  margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 30px;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 650px) {
+  /* SIDENAV */
+  .sidenav {
+    padding: 30px;
+  }
+}

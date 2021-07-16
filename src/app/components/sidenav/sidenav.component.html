@@ -1,0 +1,43 @@
+<div class="sidenav" #sidenav>
+  <a routerLink="" class="logo">
+    <span class="logo-detail"></span>
+    <span class="logo-name">Caped</span>
+  </a>
+
+  <h3 class="explore">Explore</h3>
+
+  <button class="btn-toggle" (click)="onClick()">
+    <i
+      [class]="
+        effectsService.sidenavIsHidden
+          ? 'fas fa-angle-right'
+          : 'fas fa-angle-left'
+      "
+    ></i>
+  </button>
+
+  <nav>
+    <ul>
+      <li><a routerLink="">⚡&nbsp;&nbsp;&nbsp;New In</a></li>
+
+      <li><a routerLink="">👚&nbsp;&nbsp;&nbsp;Clothing</a></li>
+
+      <li><a routerLink="">👞&nbsp;&nbsp;&nbsp;Shoes</a></li>
+
+      <li><a routerLink="">👜&nbsp;&nbsp;&nbsp;Accessories</a></li>
+
+      <li><a routerLink="">🤸&nbsp;&nbsp;&nbsp;Activewear</a></li>
+
+      <li><a routerLink="">🎁&nbsp;&nbsp;&nbsp;Gifts & Living</a></li>
+
+      <li><a routerLink="">💎&nbsp;&nbsp;&nbsp;Inspiration</a></li>
+
+      <li class="help-item">
+        <a routerLink="">
+          <i class="fas fa-comment"></i>
+          &nbsp;&nbsp;&nbsp;Help Center
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

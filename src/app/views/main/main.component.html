@@ -1,0 +1,21 @@
+<div class="content">
+  <div
+    class="product-card"
+    *ngFor="let product of mocksService.products"
+    @fadeInOut
+  >
+    <img [src]="product.image" [alt]="product.name" />
+
+    <div class="product-info">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="cartService.addToCart(product)"
+      >
+        Add to cart {{ product.price | currency }}
+      </button>
+    </div>
+  </div>
+</div>

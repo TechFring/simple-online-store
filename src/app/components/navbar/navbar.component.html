@@ -1,0 +1,81 @@
+<header>
+  <div class="search">
+    <i class="fas fa-search"></i>
+    <input
+      type="text"
+      placeholder="Search store"
+      [(ngModel)]="inputSearch"
+      (keyup)="onChange()"
+    />
+  </div>
+
+  <div class="options">
+    <div
+      [class]="
+        effectsService.innerWidth >= 820
+          ? 'expanded-navigation'
+          : 'dropdown-navigation'
+      "
+    >
+      <i class="fas fa-ellipsis-v"></i>
+
+      <nav>
+        <ul>
+          <li>
+            <a routerLink="">products</a>
+          </li>
+
+          <li>
+            <a routerLink="">story</a>
+          </li>
+
+          <li>
+            <a routerLink="">manufacturing</a>
+          </li>
+
+          <li>
+            <a routerLink="">packaging</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="dropdown-navigation">
+      <i
+        class="fas fa-shopping-cart"
+        [style.animation]="
+          cartService.executeAnimation &&
+          'add-to-cart 0.7s ease-in 0s infinite alternate'
+        "
+      ></i>
+
+      <div>
+        <ul>
+          <ng-container
+            *ngIf="
+              cartService.cart.length == 0;
+              then isEmpty;
+              else listProducts
+            "
+          ></ng-container>
+
+          <ng-template #isEmpty>
+            <li class="cart-empty">Empty</li>
+          </ng-template>
+
+          <ng-template #listProducts>
+            <li class="cart-total">
+              Total amount: {{ cartService.totalAmount | currency }}
+            </li>
+
+            <li *ngFor="let product of cartService.cart">
+              {{ product.name }} ({{ product.quantity }}x)
+            </li>
+          </ng-template>
+        </ul>
+      </div>
+    </div>
+
+    <a routerLink="" class="login"><i class="far fa-user"></i></a>
+  </div>
+</header>
