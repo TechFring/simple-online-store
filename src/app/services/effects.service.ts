@@ -9,14 +9,19 @@ export class EffectsService {
 
   constructor() {
     this.sidenavIsHidden = false;
-    this._innerWidth = window.innerWidth;
-
+    this.handleSidenav();
+    
     window.addEventListener('resize', (): void => {
-      this._innerWidth = window.innerWidth;
+      this.handleSidenav();
     });
   }
-
+  
   get innerWidth(): number {
     return this._innerWidth;
+  }
+  
+  private handleSidenav(): void {
+    this._innerWidth = window.innerWidth;
+    this.sidenavIsHidden = this._innerWidth <= 820;
   }
 }

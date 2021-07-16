@@ -1,4 +1,7 @@
-<div class="sidenav" #sidenav>
+<div
+  class="sidenav"
+  [class]="effectsService.sidenavIsHidden ? 'sidenav-hidden' : ''"
+>
   <a routerLink="" class="logo">
     <span class="logo-detail"></span>
     <span class="logo-name">Caped</span>
