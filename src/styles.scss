@@ -52,6 +52,16 @@ a {
   }
 }
 
+.btn-secondary {
+  border-color: $gray;
+  color: $black;
+  background: $white;
+
+  &:active {
+    background: $gray-light;
+  }
+}
+
 /* ANIMATIONS */
 @keyframes add-to-cart {
   0%, 2%, 4%, 6%, 8%, 10%, 12%, 14%, 16%, 18% {
