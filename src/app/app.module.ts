@@ -12,6 +12,7 @@ import { MainComponent } from './views/main/main.component';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { DetailsComponent } from './views/details/details.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     MainComponent,
     NavbarComponent,
     SidenavComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
