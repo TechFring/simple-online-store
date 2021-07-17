@@ -18,7 +18,7 @@ export class MocksService {
     return this._products;
   }
 
-  searchProduct(search: string): void {
+  searchProductsByName(search: string): void {
     search = search.trim().toLowerCase();
 
     const filtered = this.originalProducts.filter((p): Product | void => {
@@ -26,6 +26,18 @@ export class MocksService {
     });
 
     this._products = filtered;
+  }
+
+  searchProductById(id: number): Product {
+    const filtered = this.originalProducts.filter(
+      (product) => product.id === id
+    )[0];
+
+    if (filtered === undefined) {
+      throw new Error('No product found');
+    }
+
+    return filtered;
   }
 
   private generateProducts(total: number): void {

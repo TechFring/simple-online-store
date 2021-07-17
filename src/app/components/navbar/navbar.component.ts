@@ -21,6 +21,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {}
 
   onChange(): void {
-    this.mocksService.searchProduct(this.inputSearch);
+    this.mocksService.searchProductsByName(this.inputSearch);
   }
 }
