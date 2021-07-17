@@ -45,8 +45,29 @@
     opacity: 1;
   }
 
-  p {
-    margin: 8px 0px;
+  & > * {
+    margin: 4px 0px;
+  }
+}
+
+.no-products {
+  height: 100%;
+  width: 100%;
+  color: $gray-dark;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  img {
+    width: 100%;
+    max-width: 190px;
+  }
+
+  h2 {
+    margin-bottom: 8px;
+    font-size: 1.6rem;
   }
 }
 
@@ -57,13 +78,7 @@
     padding: 16px 16px 16px 2px;
   }
 
-  .product-info {
-    h3 {
-      margin-bottom: 8px;
-    }
-
-    p {
-      display: none;
-    }
+  .product-info p {
+    display: none;
   }
 }

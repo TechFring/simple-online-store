@@ -1,21 +1,48 @@
-<div class="content">
-  <div
-    class="product-card"
-    *ngFor="let product of mocksService.products"
-    @fadeInOut
-  >
-    <img [src]="product.image" [alt]="product.name" />
+<ng-container
+  *ngIf="mocksService.products.length > 0; then productList; else noProducts"
+></ng-container>
 
-    <div class="product-info">
-      <h3>{{ product.name }}</h3>
-      <p>{{ product.description }}</p>
-      <button
-        class="btn btn-primary"
-        type="button"
-        (click)="cartService.addToCart(product)"
-      >
-        Add to cart {{ product.price | currency }}
-      </button>
+<ng-template #productList>
+  <div class="content">
+    <div
+      class="product-card"
+      *ngFor="let product of mocksService.products"
+      @fadeInOut
+    >
+      <img [src]="product.image" [alt]="product.name" />
+
+      <div class="product-info">
+        <h3>{{ product.name }}</h3>
+
+        <p>{{ product.description }}</p>
+
+        <button
+          class="btn btn-secondary"
+          routerLink="/details/{{ product.id }}"
+        >
+          See details
+        </button>
+
+        <button
+          class="btn btn-primary"
+          type="button"
+          (click)="cartService.addToCart(product)"
+        >
+          Add to cart {{ product.price | currency }}
+        </button>
+      </div>
     </div>
   </div>
-</div>
+</ng-template>
+
+<ng-template #noProducts>
+  <div class="no-products">
+    <img src="./assets/images/no-products.svg" alt="No products found" />
+
+    <h2>No Products Found</h2>
+
+    <p>Your search did not match any products.</p>
+    
+    <p>Please try again.</p>
+  </div>
+</ng-template>
