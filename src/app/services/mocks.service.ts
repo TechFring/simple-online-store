@@ -6,12 +6,16 @@ import { Product } from 'src/app/models/product';
   providedIn: 'root',
 })
 export class MocksService {
-  readonly originalProducts: Product[] = [];
-  public products: Product[] = [];
+  private readonly originalProducts: Product[] = [];
+  private _products: Product[] = [];
 
   constructor() {
     const total = 8;
     this.generateProducts(total);
+  }
+
+  get products(): Product[] {
+    return this._products;
   }
 
   searchProduct(search: string): void {
@@ -21,7 +25,7 @@ export class MocksService {
       if (p.name.toLowerCase().includes(search)) return p;
     });
 
-    this.products = filtered;
+    this._products = filtered;
   }
 
   private generateProducts(total: number): void {
@@ -38,7 +42,7 @@ export class MocksService {
       this.originalProducts.push(product);
     }
 
-    this.products = this.originalProducts;
+    this._products = this.originalProducts;
   }
 
   private getRandomPrice(): number {
