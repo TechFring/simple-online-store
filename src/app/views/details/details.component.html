@@ -1,13 +1,25 @@
-<div class="main-container content" *ngIf="product">
-    <div class="details">
-        <img [src]="product.image" [alt]="product.name" />
+<div class="main-container" *ngIf="product">
+  <div class="product-details">
+    <img [src]="product.image" [alt]="product.name" />
 
-        <div>
-            <h2>{{ product.name }}</h2>
+    <div class="product-info">
+      <h1>{{ product.name }}</h1>
 
-            <p>{{ product.description }}</p>
+      <p>{{ product.description }}</p>
 
-            <button type="button" >Add to cart</button>
-        </div>
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="cartService.addToCart(product)"
+      >
+        Add to cart {{ product.price | currency }}
+      </button>
     </div>
+  </div>
+
+  <hr />
+
+  <div class="other-products">
+    <h3>Other Products</h3>
+  </div>
 </div>

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { MocksService } from 'src/app/services/mocks.service';
 import { Product } from 'src/app/models/product';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-details',
@@ -15,7 +16,8 @@ export class DetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private mocksService: MocksService
+    private mocksService: MocksService,
+    public cartService: CartService
   ) {}
 
   ngOnInit(): void {
