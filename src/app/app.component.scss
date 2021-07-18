@@ -1,3 +1,5 @@
+@import "../styles.scss";
+
 /* LAYOUT */
 main {
   display: grid;
@@ -6,10 +8,28 @@ main {
     "sidenav navbar" 80px
     "sidenav content" minmax(calc(100vh - 80px), auto)
     / 240.36px 1fr;
+
+  @media (max-width: $bp-sidenav) {
+    & {
+      grid-template:
+        "navbar navbar" 80px
+        "sidenav content" auto
+        / 240.36px 1fr;
+    }
+  }
 }
 
 .layout-hidden-sidenav {
   grid-template-columns: 14px 1fr;
+
+  @media (max-width: $bp-sidenav) {
+    & {
+      grid-template:
+        "navbar navbar" 80px
+        "sidenav content" auto
+        / 14px 1fr;
+    }
+  }
 }
 
 app-sidenav {
@@ -22,21 +42,4 @@ app-navbar {
 
 .main-content {
   grid-area: content;
-}
-
-/* MEDIA QUERIES */
-@media (max-width: 1030px) {
-  main {
-    grid-template:
-      "navbar navbar" 80px
-      "sidenav content" auto
-      / 240.36px 1fr;
-  }
-
-  .layout-hidden-sidenav {
-    grid-template:
-      "navbar navbar" 80px
-      "sidenav content" auto
-      / 14px 1fr;
-  }
 }

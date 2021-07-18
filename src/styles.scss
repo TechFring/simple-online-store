@@ -1,4 +1,4 @@
-/* VARIABLES */
+/* COLORS */
 $yellow-light: #f7e77d;
 $yellow: #f4de4d;
 $yellow-dark: #f1d51d;
@@ -10,6 +10,11 @@ $white: #ffff;
 $gray-light: #ccc;
 $gray: #b3b3b3;
 $gray-dark: #999;
+
+/* BREAKPOINTS */
+$bp-mobile: 650px;
+$bp-navbar: 820px;
+$bp-sidenav: 1030px;
 
 /* GLOBAL */
 * {
@@ -30,10 +35,22 @@ a {
   transition: 0.5s text-decoration;
 }
 
+.main-container {
+  padding: 30px 30px 30px 16px;
+
+  @media (max-width: $bp-mobile) {
+    & {
+      padding: 16px 16px 16px 2px;
+    }
+  }
+}
+
+/* FORM */
 ::placeholder {
   color: $gray;
 }
 
+/* BUTTON */
 .btn {
   padding: 10px 20px;
   border: 1px solid transparent;
