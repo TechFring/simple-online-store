@@ -48,7 +48,7 @@ export class MocksService {
         description:
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
         price: this.getRandomPrice(),
-        image: 'https://source.unsplash.com/random/230x377',
+        image: 'https://source.unsplash.com/random/500x800',
       };
 
       this.originalProducts.push(product);
