@@ -3,35 +3,11 @@
 ></ng-container>
 
 <ng-template #productList>
-  <div class="main-container content">
-    <div
-      class="product-card"
+  <div class="main-container products-container">
+    <app-product-card
       *ngFor="let product of mocksService.products"
-      @fadeInOut
-    >
-      <img [src]="product.image" [alt]="product.name" />
-
-      <div class="product-info">
-        <h3>{{ product.name }}</h3>
-
-        <p>{{ product.description }}</p>
-
-        <button
-          class="btn btn-secondary"
-          routerLink="/details/{{ product.id }}"
-        >
-          See details
-        </button>
-
-        <button
-          class="btn btn-primary"
-          type="button"
-          (click)="cartService.addToCart(product)"
-        >
-          Add to cart {{ product.price | currency }}
-        </button>
-      </div>
-    </div>
+      [product]="product"
+    ></app-product-card>
   </div>
 </ng-template>
 
@@ -42,7 +18,7 @@
     <h2>No Products Found</h2>
 
     <p>Your search did not match any products.</p>
-    
+
     <p>Please try again.</p>
   </div>
 </ng-template>
