@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DetailsComponent } from './views/details/details.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { DetailsComponent } from './views/details/details.component';
     NavbarComponent,
     SidenavComponent,
     DetailsComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
