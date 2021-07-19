@@ -1,8 +1,8 @@
 <div class="main-container" *ngIf="product">
-  <div class="product-details">
+  <div class="product-container">
     <img [src]="product.image" [alt]="product.name" />
 
-    <div class="product-info">
+    <div class="product-details">
       <h1>{{ product.name }}</h1>
 
       <p>{{ product.description }}</p>
@@ -19,7 +19,14 @@
 
   <hr />
 
-  <div class="other-products">
+  <section>
     <h3>Other Products</h3>
-  </div>
+
+    <div class="other-products">
+      <app-product-card
+        *ngFor="let product of otherProducts"
+        [product]="product"
+      ></app-product-card>
+    </div>
+  </section>
 </div>
