@@ -7,14 +7,14 @@ main {
   grid-template:
     "sidenav navbar" 80px
     "sidenav content" minmax(calc(100vh - 80px), auto)
-    / 240.36px 1fr;
+    / $wd-sidenav-show 1fr;
 
   @media (max-width: $bp-sidenav) {
     & {
       grid-template:
         "navbar navbar" 80px
         "sidenav content" auto
-        / 240.36px 1fr;
+        / $wd-sidenav-show 1fr;
     }
   }
 }
@@ -27,7 +27,7 @@ main {
       grid-template:
         "navbar navbar" 80px
         "sidenav content" auto
-        / 14px 1fr;
+        / $wd-sidenav-hide 1fr;
     }
   }
 }
