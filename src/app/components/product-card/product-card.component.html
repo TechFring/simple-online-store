@@ -1,0 +1,33 @@
+<ng-container
+  *ngIf="effectsService.isMobile; then isMobile; else isDesktop"
+></ng-container>
+
+<ng-template #isMobile>
+  <a class="product-card" routerLink="/details/{{ product.id }}" @fadeInOut>
+    <img [src]="product.image" [alt]="product.name" />
+  </a>
+</ng-template>
+
+<ng-template #isDesktop>
+  <div class="product-card" @fadeInOut>
+    <img [src]="product.image" [alt]="product.name" />
+
+    <div class="product-info">
+      <h3>{{ product.name }}</h3>
+
+      <p>{{ product.description }}</p>
+
+      <button class="btn btn-secondary" routerLink="/details/{{ product.id }}">
+        See details
+      </button>
+
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="cartService.addToCart(product)"
+      >
+        Add to cart {{ product.price | currency }}
+      </button>
+    </div>
+  </div>
+</ng-template>
