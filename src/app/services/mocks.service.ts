@@ -6,7 +6,7 @@ import { Product } from 'src/app/models/product';
   providedIn: 'root',
 })
 export class MocksService {
-  private readonly originalProducts: Product[] = [];
+  private readonly _originalProducts: Product[] = [];
   private _products: Product[] = [];
 
   constructor() {
@@ -21,7 +21,7 @@ export class MocksService {
   searchProductsByName(search: string): void {
     search = search.trim().toLowerCase();
 
-    const filtered = this.originalProducts.filter((p): Product | void => {
+    const filtered = this._originalProducts.filter((p): Product | void => {
       if (p.name.toLowerCase().includes(search)) return p;
     });
 
@@ -29,15 +29,18 @@ export class MocksService {
   }
 
   searchProductById(id: number): Product {
-    const filtered = this.originalProducts.filter(
-      (product) => product.id === id
-    )[0];
+    const filtered = this._originalProducts.filter((p) => p.id === id)[0];
 
     if (filtered === undefined) {
       throw new Error('No product found');
     }
 
     return filtered;
+  }
+
+  getOtherProducts(id: number): Product[] {
+    const products = this._originalProducts.filter((p) => p.id !== id);
+    return products;
   }
 
   private generateProducts(total: number): void {
@@ -51,10 +54,10 @@ export class MocksService {
         image: 'https://source.unsplash.com/random/500x800',
       };
 
-      this.originalProducts.push(product);
+      this._originalProducts.push(product);
     }
 
-    this._products = this.originalProducts;
+    this._products = this._originalProducts;
   }
 
   private getRandomPrice(): number {
