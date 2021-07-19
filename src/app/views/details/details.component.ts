@@ -12,6 +12,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class DetailsComponent implements OnInit {
   public product: Product;
+  public otherProducts: Product[];
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,8 @@ export class DetailsComponent implements OnInit {
       try {
         const id = parseInt(params.id);
         this.product = this.mocksService.searchProductById(id);
+        this.otherProducts = this.mocksService.getOtherProducts(id);
+        console.log(this.otherProducts)
       } catch (err) {
         this.router.navigate(['']);
       }
