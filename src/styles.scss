@@ -16,6 +16,10 @@ $bp-mobile: 650px;
 $bp-navbar: 820px;
 $bp-sidenav: 1030px;
 
+/* WIDTH */
+$wd-sidenav-show: 240.36px;
+$wd-sidenav-hide: 14px;
+
 /* GLOBAL */
 * {
   padding: 0px;
@@ -92,6 +96,26 @@ a {
 
   &:active {
     background: $gray-light;
+  }
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gray-light;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+
+  &:hover {
+    background-color: $gray;
   }
 }
 
