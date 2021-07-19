@@ -59,6 +59,8 @@ export class CartService {
 
   private handleAnimation(): void {
     this._executeAnimation = true;
-    this._timeout = setTimeout(() => (this._executeAnimation = false), 500);
+    this._timeout = setTimeout(() => {
+      this._executeAnimation = false;
+    }, 500);
   }
 }
