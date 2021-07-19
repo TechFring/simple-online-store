@@ -76,6 +76,11 @@
       </div>
     </div>
 
-    <a routerLink="" class="login"><i class="far fa-user"></i></a>
+    <div
+      class="container-dark-mode"
+      (click)="effectsService.handleDarkMode(isDarkMode)"
+    >
+      <i [class]="isDarkMode ? 'far fa-lightbulb' : 'fas fa-lightbulb'"></i>
+    </div>
   </div>
 </header>

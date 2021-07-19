@@ -129,6 +129,7 @@ header {
   }
 }
 
+/* CART */
 .cart-empty {
   text-align: center;
 }
@@ -137,4 +138,9 @@ header {
   border-bottom: 1px solid $gray-light;
   margin-bottom: 10px;
   padding-bottom: 10px !important;
+}
+
+/* DARK MODE */
+.container-dark-mode {
+  cursor: pointer;
 }

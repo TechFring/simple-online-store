@@ -1,9 +1,9 @@
 <main [class]="effectsService.sidenavIsHidden ? 'layout-hidden-sidenav' : ''">
-    <app-sidenav></app-sidenav>
-    
-    <app-navbar></app-navbar>
+  <app-sidenav></app-sidenav>
 
-    <div class="main-content">
-        <router-outlet></router-outlet>
-    </div>
+  <app-navbar></app-navbar>
+
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
 </main>

@@ -3,7 +3,9 @@ $yellow-light: #f7e77d;
 $yellow: #f4de4d;
 $yellow-dark: #f1d51d;
 
-$black: rgb(31, 30, 30);
+$black-light: #393737;
+$black: #1f1e1e;
+$black-dark: #121111;
 
 $white: #ffff;
 
@@ -151,5 +153,28 @@ a {
   100% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+  }
+}
+
+/* DARK MODE */
+body.dark-mode {
+  &,
+  header,
+  aside,
+  input,
+  nav {
+    background: $black !important;
+    color: $gray-light !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  a,
+  i,
+  input {
+    color: $white;
   }
 }

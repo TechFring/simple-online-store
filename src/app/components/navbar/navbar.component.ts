@@ -11,6 +11,7 @@ import { MocksService } from 'src/app/services/mocks.service';
 })
 export class NavbarComponent implements OnInit {
   public inputSearch: string;
+  public isDarkMode: boolean;
 
   constructor(
     public cartService: CartService,
@@ -18,7 +19,11 @@ export class NavbarComponent implements OnInit {
     public mocksService: MocksService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.effectsService.isDarkMode.subscribe((res) => {
+      this.isDarkMode = res;
+    });
+  }
 
   onChange(): void {
     this.mocksService.searchProductsByName(this.inputSearch);
