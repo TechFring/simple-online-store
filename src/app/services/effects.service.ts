@@ -6,22 +6,28 @@ import { Injectable } from '@angular/core';
 export class EffectsService {
   public sidenavIsHidden: boolean;
   private _innerWidth: number;
+  private _isMobile: boolean;
 
   constructor() {
     this.sidenavIsHidden = false;
-    this.handleSidenav();
+    this.handleResize();
     
     window.addEventListener('resize', (): void => {
-      this.handleSidenav();
+      this.handleResize();
     });
   }
   
   get innerWidth(): number {
     return this._innerWidth;
   }
+
+  get isMobile(): boolean {
+    return this._isMobile;
+  }
   
-  private handleSidenav(): void {
+  private handleResize(): void {
     this._innerWidth = window.innerWidth;
+    this._isMobile = this._innerWidth <= 650;
     this.sidenavIsHidden = this._innerWidth <= 820;
   }
 }
