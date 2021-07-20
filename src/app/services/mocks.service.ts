@@ -9,7 +9,7 @@ export class MocksService {
   private _products: Product[] = [];
 
   constructor() {
-    const total = 8;
+    const total = 15;
     this.generateProducts(total);
   }
 
