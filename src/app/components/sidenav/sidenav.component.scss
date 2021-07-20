@@ -2,10 +2,16 @@
 
 /* SIDENAV */
 .sidenav {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   overflow-y: hidden;
+  z-index: 1000;
 
-  padding: 51px 56px;
+  transition: margin-left 0.2s;
+  
+  padding: 30px;
+  width: 240px;
   height: 100%;
   background-color: $white;
 
@@ -17,50 +23,20 @@
 }
 
 .explore {
-  font-size: 2rem;
+  font-size: 1.2rem;
   margin: 57px 0px 44.24px;
 }
 
-/* LOGO */
-.logo {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.logo-detail {
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  background-color: $yellow;
-}
-
-.logo-name {
-  font-size: 1.5rem;
-  letter-spacing: 5px;
-  margin-left: -20px;
-  font-weight: 600;
-}
-
 /* BUTTON TOGGLE */
-.btn-toggle {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 30vh;
-  cursor: pointer;
-
-  border-radius: 3px 0px 0px 3px;
-
-  padding: 2px;
-  border: 1px solid $gray;
-  background-color: transparent;
-}
-
 .sidenav-hidden {
   margin-left: -226.36px;
 
   .btn-toggle {
+    border-left: none;
+    border-top: 1px solid $gray;
+    border-right: 1px solid $gray;
+    border-bottom: 1px solid $gray;
+
     border-radius: 0px 3px 3px 0px;
   }
 }

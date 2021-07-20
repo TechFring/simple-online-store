@@ -1,0 +1,23 @@
+body.dark-mode {
+  &,
+  header,
+  aside,
+  input,
+  nav,
+  .dropdown ul {
+    background: $black !important;
+    color: $gray-light !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  a,
+  i,
+  input,
+  .dropdown ul {
+    color: $white !important;
+  }
+}

@@ -1,0 +1,45 @@
+.btn {
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-primary {
+  border-color: $gray;
+  color: $black;
+  background: $yellow;
+
+  &:active {
+    background: $yellow-dark;
+  }
+}
+
+.btn-secondary {
+  border-color: $gray;
+  color: $black;
+  background: $white;
+
+  &:active {
+    background: $gray-light;
+  }
+}
+
+.btn-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 30vh;
+  cursor: pointer;
+
+  border-radius: 3px 0px 0px 3px;
+
+  padding: 2px;
+  background-color: transparent;
+
+  border-right: none;
+  border-top: 1px solid $gray;
+  border-left: 1px solid $gray;
+  border-bottom: 1px solid $gray;
+}

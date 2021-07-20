@@ -1,0 +1,26 @@
+::placeholder {
+  color: $gray;
+}
+
+.input-search {
+  position: relative;
+  margin: 0 auto;
+
+  i {
+    position: absolute;
+    top: 29%;
+    left: 13px;
+  }
+
+  input {
+    border: none;
+    height: 42px;
+    padding: 0px 12px 0px 40px;
+    border-radius: 50px;
+    outline: none;
+
+    &:focus {
+      box-shadow: 0 0 2px 0 $gray-dark;
+    }
+  }
+}
