@@ -10,6 +10,8 @@ import { MocksService } from 'src/app/services/mocks.service';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
+  public inputSearch: string;
+
   constructor(
     public cartService: CartService,
     public effectsService: EffectsService,
@@ -17,4 +19,9 @@ export class MainComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+  /* EVENTS */
+  onChangeSearch(): void {
+    this.mocksService.searchProductsByName(this.inputSearch);
+  }
 }

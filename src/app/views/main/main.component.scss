@@ -1,5 +1,26 @@
 @import "../../../styles.scss";
 
+/* CONTAINER */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  
+  min-height: calc(100vh - 60px);
+  height: 100%;
+}
+
+/* SEARCH */
+.input-search {
+  display: block;
+  margin-bottom: 24px;
+
+  @media (max-width: $bp-mobile) {
+    &, input {
+      width: 100%;
+    }
+  }
+}
+
 /* LAYOUT */
 .products-container {
   display: grid;
@@ -13,8 +34,7 @@
 
 /* PRODUCT */
 .no-products {
-  height: 100%;
-  width: 100%;
+  margin: auto;
   color: $gray-dark;
 
   display: flex;
