@@ -35,7 +35,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.observeIsDarkMode();
     this.observeExecuteCartAnimation();
-    this.observeSidenavIsHidden();
+    this.observeNavbarIsExpanded();
   }
 
   /* EVENTS */
@@ -67,10 +67,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     });
   }
 
-  private observeSidenavIsHidden(): void {
-    this.effectsService.sidenavIsHidden.subscribe((isHidden) => {
+  private observeNavbarIsExpanded(): void {
+    this.effectsService.navbarIsExpanded.subscribe((isExpanded) => {
       const elMenu = this.menu.nativeElement;
-      const className = isHidden ? 'dropdown' : 'expanded-navigation';
+      const className = isExpanded ? 'dropdown' : 'expanded-navigation';
       elMenu.className = className;
     });
   }
