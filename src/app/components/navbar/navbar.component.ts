@@ -16,7 +16,7 @@ import { MocksService } from 'src/app/services/mocks.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit, AfterViewInit {
-  public inputSearch: string;
+  // public inputSearch: string;
   public isDarkMode: boolean;
   public executeCartAnimation: boolean;
 
@@ -39,9 +39,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   /* EVENTS */
-  onChange(): void {
-    this.mocksService.searchProductsByName(this.inputSearch);
-  }
+  // onChange(): void {
+  //   this.mocksService.searchProductsByName(this.inputSearch);
+  // }
 
   /* OBSERVABLES */
   private observeIsDarkMode(): void {
