@@ -22,12 +22,16 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.observeUrlParams();
+  }
+
+  /* OBSERVABLES */
+  private observeUrlParams(): void {
     this.route.params.subscribe((params) => {
       try {
         const id = parseInt(params.id);
         this.product = this.mocksService.searchProductById(id);
         this.otherProducts = this.mocksService.getOtherProducts(id);
-        console.log(this.otherProducts)
       } catch (err) {
         this.router.navigate(['']);
       }
