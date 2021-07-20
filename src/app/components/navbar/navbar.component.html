@@ -2,23 +2,13 @@
   <div class="container-logo">
     <i
       class="fas fa-bars"
-      (click)="effectsService.handleSidenav(sidenavIsHidden)"
+      (click)="effectsService.handleSidenav(sidenavIsShowing)"
     ></i>
 
     <a routerLink="" class="logo">
       <span>Caped</span>
     </a>
   </div>
-
-  <!-- <div class="input-search">
-      <i class="fas fa-search"></i>
-      <input
-        type="text"
-        placeholder="Search store"
-        [(ngModel)]="inputSearch"
-        (keyup)="onChange()"
-      />
-    </div> -->
 
   <div class="options">
     <div #menu>
@@ -43,6 +33,13 @@
           </li>
         </ul>
       </nav>
+    </div>
+
+    <div
+      class="container-dark-mode"
+      (click)="effectsService.handleDarkMode(isDarkMode)"
+    >
+      <i #iconDarkMode class="far fa-lightbulb"></i>
     </div>
 
     <div class="dropdown">
@@ -73,13 +70,6 @@
           </ng-template>
         </ul>
       </div>
-    </div>
-
-    <div
-      class="container-dark-mode"
-      (click)="effectsService.handleDarkMode(isDarkMode)"
-    >
-      <i #iconDarkMode class="far fa-lightbulb"></i>
     </div>
   </div>
 </header>

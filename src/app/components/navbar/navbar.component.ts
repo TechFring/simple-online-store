@@ -18,7 +18,7 @@ import { MocksService } from 'src/app/services/mocks.service';
 export class NavbarComponent implements OnInit, AfterViewInit {
   // public inputSearch: string;
   public isDarkMode: boolean;
-  public sidenavIsHidden: boolean;
+  public sidenavIsShowing: boolean;
   public executeCartAnimation: boolean;
 
   @ViewChild('iconDarkMode') iconDarkMode: ElementRef;
@@ -37,13 +37,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.observeIsDarkMode();
     this.observeExecuteCartAnimation();
     this.observeNavbarIsExpanded();
-    this.observeSidenavIsHidden();
+    this.observeSidenavIsShowing();
   }
-
-  /* EVENTS */
-  // onChange(): void {
-  //   this.mocksService.searchProductsByName(this.inputSearch);
-  // }
 
   /* OBSERVABLES */
   private observeIsDarkMode(): void {
@@ -77,9 +72,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     });
   }
 
-  private observeSidenavIsHidden(): void {
-    this.effectsService.sidenavIsHidden.subscribe((isHidden) => {
-      this.sidenavIsHidden = isHidden;
+  private observeSidenavIsShowing(): void {
+    this.effectsService.sidenavIsShowing.subscribe((isShowing) => {
+      this.sidenavIsShowing = isShowing;
     });
   }
 }
