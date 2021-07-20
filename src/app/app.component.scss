@@ -1,45 +1,19 @@
 @import "../styles.scss";
 
 /* LAYOUT */
-main {
+#content {
   display: grid;
   transition: all 0.5s;
   grid-template:
-    "sidenav navbar" 80px
-    "sidenav content" minmax(calc(100vh - 80px), auto)
-    / $wd-sidenav-show 1fr;
-
-  @media (max-width: $bp-sidenav) {
-    & {
-      grid-template:
-        "navbar navbar" 80px
-        "sidenav content" auto
-        / $wd-sidenav-show 1fr;
-    }
-  }
-}
-
-.layout-hidden-sidenav {
-  grid-template-columns: 14px 1fr;
-
-  @media (max-width: $bp-sidenav) {
-    & {
-      grid-template:
-        "navbar navbar" 80px
-        "sidenav content" auto
-        / $wd-sidenav-hide 1fr;
-    }
-  }
-}
-
-app-sidenav {
-  grid-area: sidenav;
+    "app-navbar" 80px
+    "main-content" minmax(calc(100vh - 80px), auto)
+    / 1fr;
 }
 
 app-navbar {
-  grid-area: navbar;
+  grid-area: app-navbar;
 }
 
 .main-content {
-  grid-area: content;
+  grid-area: main-content;
 }

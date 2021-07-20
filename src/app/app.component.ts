@@ -15,8 +15,9 @@ import { EffectsService } from './services/effects.service';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   public title = 'simple-online-store';
+  private sidenavIsHidden: boolean;
 
-  @ViewChild('main') main: ElementRef;
+  @ViewChild('content') content: ElementRef;
 
   constructor(public effectsService: EffectsService) {}
 
@@ -26,6 +27,13 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.observeSidenavIsHidden();
+  }
+
+  /* EVENTS */
+  onClickBlur(): void {
+    if (!this.sidenavIsHidden) {
+      this.effectsService.handleSidenav(false);
+    }
   }
 
   /* OBSERVABLES */
@@ -41,12 +49,15 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   private observeSidenavIsHidden(): void {
     this.effectsService.sidenavIsHidden.subscribe((isHidden) => {
-      const nativeElement = this.main.nativeElement;
+      this.sidenavIsHidden = isHidden;
+      const nativeElement = this.content.nativeElement;
 
       if (isHidden) {
-        nativeElement.classList.add('layout-hidden-sidenav');
+        nativeElement.classList.remove('blur');
+        document.body.style.overflowY = "auto";
       } else {
-        nativeElement.classList.remove('layout-hidden-sidenav');
+        nativeElement.classList.add('blur');
+        document.body.style.overflowY = "hidden";
       }
     });
   }

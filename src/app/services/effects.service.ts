@@ -19,7 +19,7 @@ export class EffectsService {
   constructor() {
     this._isDarkMode = new BehaviorSubject<boolean>(false);
     this._isMobile = new BehaviorSubject<boolean>(false);
-    this._sidenavIsHidden = new BehaviorSubject<boolean>(false);
+    this._sidenavIsHidden = new BehaviorSubject<boolean>(true);
     this._navbarIsExpanded = new BehaviorSubject<boolean>(false);
     this.executeCartAnimation = new BehaviorSubject<boolean>(false);
     
@@ -65,12 +65,10 @@ export class EffectsService {
   
   private handleResize(): void {
     const innerWidth = window.innerWidth;
-    const sidenavIsHidden = innerWidth <= this.BREAKPOINT_NAV;
     const navbarIsExpanded = innerWidth <= this.BREAKPOINT_NAV
     const isMobile = innerWidth <= this.BREAKPOINT_MOBILE;
 
     this._innerWidth = innerWidth;
-    this._sidenavIsHidden.next(sidenavIsHidden);
     this._navbarIsExpanded.next(navbarIsExpanded);
     this._isMobile.next(isMobile);
   }
