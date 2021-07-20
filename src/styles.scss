@@ -6,12 +6,14 @@ $yellow-dark: #f1d51d;
 $black-light: #393737;
 $black: #1f1e1e;
 $black-dark: #121111;
+$black-transparent: rgba(0, 0, 0, 0.3);
 
 $white: #ffff;
 
 $gray-light: #ccc;
 $gray: #b3b3b3;
 $gray-dark: #999;
+
 
 /* BREAKPOINTS */
 $bp-mobile: 650px;
@@ -162,7 +164,8 @@ body.dark-mode {
   header,
   aside,
   input,
-  nav {
+  nav,
+  .dropdown ul {
     background: $black !important;
     color: $gray-light !important;
   }
@@ -174,7 +177,62 @@ body.dark-mode {
   h5,
   a,
   i,
-  input {
-    color: $white;
+  input,
+  .dropdown ul {
+    color: $white !important;
+  }
+}
+
+/* DROPDOWN */
+.dropdown {
+  i {
+    cursor: pointer;
+
+    &:hover + * {
+      display: block;
+    }
+  }
+
+  i + * {
+    display: none;
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+
+    &:hover {
+      display: block;
+    }
+  }
+
+  ul {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -3px;
+    min-width: 200px;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 10px 0px;
+    border: 1px solid $black-transparent;
+    background-color: $white;
+  }
+
+  li {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 3px 20px;
+    margin-right: 0px;
+
+    a {
+      display: block;
+    }
+  }
+
+  .highlight {
+    border-bottom: 1px solid $black-transparent;
+    margin-bottom: 10px;
+    padding-bottom: 10px !important;
   }
 }
