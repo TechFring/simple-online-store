@@ -10,7 +10,7 @@
 
   transition: margin-left 0.2s;
   
-  padding: 30px;
+  padding: 30px 16px;
   width: 240px;
   height: 100%;
   background-color: $white;
@@ -20,6 +20,10 @@
       padding: 30px;
     }
   }
+}
+
+.logo {
+  margin-left: 15px;
 }
 
 .explore {
