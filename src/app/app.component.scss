@@ -1,19 +1,5 @@
 @import "../styles.scss";
 
-/* LAYOUT */
-#content {
-  display: grid;
-  transition: all 0.5s;
-  grid-template:
-    "app-navbar" 80px
-    "main-content" minmax(calc(100vh - 80px), auto)
-    / 1fr;
-}
-
-app-navbar {
-  grid-area: app-navbar;
-}
-
 .main-content {
-  grid-area: main-content;
+  padding-top: 80px;
 }
