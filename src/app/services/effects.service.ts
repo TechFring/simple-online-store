@@ -12,14 +12,14 @@ export class EffectsService {
 
   private _isDarkMode: BehaviorSubject<boolean>;
   private _isMobile: BehaviorSubject<boolean>;
-  private _sidenavIsHidden: BehaviorSubject<boolean>;
+  private _sidenavIsShowing: BehaviorSubject<boolean>;
   private _navbarIsExpanded: BehaviorSubject<boolean>;
   public executeCartAnimation: BehaviorSubject<boolean>;
 
   constructor() {
     this._isDarkMode = new BehaviorSubject<boolean>(false);
     this._isMobile = new BehaviorSubject<boolean>(false);
-    this._sidenavIsHidden = new BehaviorSubject<boolean>(true);
+    this._sidenavIsShowing = new BehaviorSubject<boolean>(false);
     this._navbarIsExpanded = new BehaviorSubject<boolean>(false);
     this.executeCartAnimation = new BehaviorSubject<boolean>(false);
     
@@ -45,8 +45,8 @@ export class EffectsService {
     return this._isDarkMode;
   }
 
-  get sidenavIsHidden(): BehaviorSubject<boolean> {
-    return this._sidenavIsHidden;
+  get sidenavIsShowing(): BehaviorSubject<boolean> {
+    return this._sidenavIsShowing;
   }
 
   get navbarIsExpanded(): BehaviorSubject<boolean> {
@@ -59,8 +59,8 @@ export class EffectsService {
     window.localStorage.setItem('@sos/dark-mode', String(value));
   }
 
-  handleSidenav(sidenavIsHidden: boolean): void {
-    this._sidenavIsHidden.next(!sidenavIsHidden);
+  handleSidenav(sidenavIsShowing: boolean): void {
+    this._sidenavIsShowing.next(!sidenavIsShowing);
   }
   
   private handleResize(): void {
