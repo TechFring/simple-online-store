@@ -7,13 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Views
 import { MainComponent } from './views/main/main.component';
+import { DetailsComponent } from './views/details/details.component';
 
 // Components
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { DetailsComponent } from './views/details/details.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { CartShoppingComponent } from './components/cart-shopping/cart-shopping.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     SidenavComponent,
     DetailsComponent,
     ProductCardComponent,
+    CartShoppingComponent,
   ],
   imports: [
     BrowserModule,
