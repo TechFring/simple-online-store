@@ -1,16 +1,23 @@
-<aside class="sidenav" #aside>
-  <a routerLink="" class="logo">
-    <span>Caped</span>
-  </a>
+<aside class="sidenav sidenav-hide" #aside>
+  <div class="container-logo">
+    <i
+      class="fas fa-bars"
+      (click)="effectsService.handleSidenav(sidenavIsHidden)"
+    ></i>
+
+    <a routerLink="" class="logo">
+      <span>Caped</span>
+    </a>
+  </div>
 
   <h3 class="explore">Explore</h3>
 
-  <button
+  <!-- <button
     class="btn-toggle"
     (click)="effectsService.handleSidenav(sidenavIsHidden)"
   >
     <i class="sidenavIsHidden" #iconToggle></i>
-  </button>
+  </button> -->
 
   <nav>
     <ul>

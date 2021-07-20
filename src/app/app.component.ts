@@ -49,16 +49,18 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   private observeSidenavIsHidden(): void {
     this.effectsService.sidenavIsHidden.subscribe((isHidden) => {
-      this.sidenavIsHidden = isHidden;
-      const nativeElement = this.content.nativeElement;
+      window.setTimeout(() => {
+        this.sidenavIsHidden = isHidden;
+        const nativeElement = this.content.nativeElement;
 
-      if (isHidden) {
-        nativeElement.classList.remove('blur');
-        document.body.style.overflowY = "auto";
-      } else {
-        nativeElement.classList.add('blur');
-        document.body.style.overflowY = "hidden";
-      }
+        if (isHidden) {
+          nativeElement.classList.remove('blur');
+          document.body.style.overflowY = 'auto';
+        } else {
+          nativeElement.classList.add('blur');
+          document.body.style.overflowY = 'hidden';
+        }
+      }, 100);
     });
   }
 }

@@ -17,7 +17,6 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   public sidenavIsHidden: boolean;
 
   @ViewChild('aside') aside: ElementRef;
-  @ViewChild('iconToggle') iconToggle: ElementRef;
 
   constructor(public effectsService: EffectsService) {}
 
@@ -33,18 +32,12 @@ export class SidenavComponent implements OnInit, AfterViewInit {
       this.sidenavIsHidden = isHidden;
 
       const elAside = this.aside.nativeElement;
-      const elToggle = this.iconToggle.nativeElement;
-      let classNameToggle = 'fas fa-angle-';
-      
-      if (isHidden) {
-        elAside.classList.add('sidenav-hidden');
-        classNameToggle += 'right';
-      } else {
-        elAside.classList.remove('sidenav-hidden');
-        classNameToggle += 'left';
-      }
 
-      elToggle.className = classNameToggle;
+      if (isHidden) {
+        elAside.classList.add('sidenav-hide');
+      } else {
+        elAside.classList.remove('sidenav-hide');
+      }
     });
   }
 }

@@ -1,9 +1,16 @@
 <header>
+  <div class="container-logo">
+    <i
+      class="fas fa-bars"
+      (click)="effectsService.handleSidenav(sidenavIsHidden)"
+    ></i>
+
     <a routerLink="" class="logo">
       <span>Caped</span>
     </a>
+  </div>
 
-    <!-- <div class="input-search">
+  <!-- <div class="input-search">
       <i class="fas fa-search"></i>
       <input
         type="text"

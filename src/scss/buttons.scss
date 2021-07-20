@@ -25,21 +25,3 @@
     background: $gray-light;
   }
 }
-
-.btn-toggle {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 30vh;
-  cursor: pointer;
-
-  border-radius: 3px 0px 0px 3px;
-
-  padding: 2px;
-  background-color: transparent;
-
-  border-right: none;
-  border-top: 1px solid $gray;
-  border-left: 1px solid $gray;
-  border-bottom: 1px solid $gray;
-}
