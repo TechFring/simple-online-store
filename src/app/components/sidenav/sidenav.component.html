@@ -1,7 +1,4 @@
-<aside
-  class="sidenav"
-  [class]="effectsService.sidenavIsHidden ? 'sidenav-hidden' : ''"
->
+<aside class="sidenav" #aside>
   <a routerLink="" class="logo">
     <span class="logo-detail"></span>
     <span class="logo-name">Caped</span>
@@ -9,14 +6,11 @@
 
   <h3 class="explore">Explore</h3>
 
-  <button class="btn-toggle" (click)="onClick()">
-    <i
-      [class]="
-        effectsService.sidenavIsHidden
-          ? 'fas fa-angle-right'
-          : 'fas fa-angle-left'
-      "
-    ></i>
+  <button
+    class="btn-toggle"
+    (click)="effectsService.handleSidenav(sidenavIsHidden)"
+  >
+    <i class="sidenavIsHidden" #iconToggle></i>
   </button>
 
   <nav>

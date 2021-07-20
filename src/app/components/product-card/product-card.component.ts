@@ -13,6 +13,8 @@ import { fadeInOut } from 'src/app/animations';
   animations: [fadeInOut],
 })
 export class ProductCardComponent implements OnInit {
+  public isMobile: boolean;
+
   @Input() product: Product;
 
   constructor(
@@ -21,5 +23,14 @@ export class ProductCardComponent implements OnInit {
     public mocksService: MocksService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.observeIsMobile();
+  }
+
+  /* OBSERVABLES */
+  private observeIsMobile(): void {
+    this.effectsService.isMobile.subscribe((isMobile) => {
+      this.isMobile = isMobile;
+    });
+  }
 }

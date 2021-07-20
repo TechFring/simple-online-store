@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Product, ProductCart } from 'src/app/models/product';
+import { EffectsService } from './effects.service';
 
 @Injectable({
   providedIn: 'root',
@@ -8,13 +9,11 @@ import { Product, ProductCart } from 'src/app/models/product';
 export class CartService {
   private _cart: ProductCart[];
   private _totalAmount: number;
-  private _executeAnimation: boolean;
   private _timeout: ReturnType<typeof setTimeout>;
 
-  constructor() {
+  constructor(private effectsService: EffectsService) {
     this._cart = [];
     this._totalAmount = 0;
-    this._executeAnimation = false;
   }
 
   get cart(): ProductCart[] {
@@ -23,10 +22,6 @@ export class CartService {
 
   get totalAmount(): number {
     return this._totalAmount;
-  }
-
-  get executeAnimation(): boolean {
-    return this._executeAnimation;
   }
 
   addToCart(product: Product): void {
@@ -58,9 +53,10 @@ export class CartService {
   }
 
   private handleAnimation(): void {
-    this._executeAnimation = true;
+    this.effectsService.executeCartAnimation.next(true);
+
     this._timeout = setTimeout(() => {
-      this._executeAnimation = false;
+      this.effectsService.executeCartAnimation.next(false);
     }, 500);
   }
 }

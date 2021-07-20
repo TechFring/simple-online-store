@@ -10,13 +10,7 @@
   </div>
 
   <div class="options">
-    <div
-      [class]="
-        effectsService.innerWidth >= 820
-          ? 'expanded-navigation'
-          : 'dropdown-navigation'
-      "
-    >
+    <div #menu>
       <i class="fas fa-ellipsis-v"></i>
 
       <nav>
@@ -40,14 +34,8 @@
       </nav>
     </div>
 
-    <div class="dropdown-navigation">
-      <i
-        class="fas fa-shopping-cart"
-        [style.animation]="
-          cartService.executeAnimation &&
-          'add-to-cart 0.7s ease-in 0s infinite alternate'
-        "
-      ></i>
+    <div class="dropdown">
+      <i class="fas fa-shopping-cart" #iconCart></i>
 
       <div>
         <ul>
@@ -64,7 +52,7 @@
           </ng-template>
 
           <ng-template #listProducts>
-            <li class="cart-total">
+            <li class="highlight">
               Total amount: {{ cartService.totalAmount | currency }}
             </li>
 
@@ -80,7 +68,7 @@
       class="container-dark-mode"
       (click)="effectsService.handleDarkMode(isDarkMode)"
     >
-      <i [class]="isDarkMode ? 'far fa-lightbulb' : 'fas fa-lightbulb'"></i>
+      <i #iconDarkMode class="far fa-lightbulb"></i>
     </div>
   </div>
 </header>

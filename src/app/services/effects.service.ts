@@ -5,17 +5,26 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class EffectsService {
-  public sidenavIsHidden: boolean;
+  private readonly BREAKPOINT_SIDENAV = 820;
+  private readonly BREAKPOINT_MOBILE = 650;
+
   private _innerWidth: number;
-  private _isMobile: boolean;
-  private _isDarkMode = new BehaviorSubject<boolean>(false);
+
+  private _isDarkMode: BehaviorSubject<boolean>;
+  private _isMobile: BehaviorSubject<boolean>;
+  private _sidenavIsHidden: BehaviorSubject<boolean>;
+  public executeCartAnimation: BehaviorSubject<boolean>;
 
   constructor() {
-    this.sidenavIsHidden = false;
-    this.handleResize();
-
+    this._isDarkMode = new BehaviorSubject<boolean>(false);
+    this._isMobile = new BehaviorSubject<boolean>(false);
+    this._sidenavIsHidden = new BehaviorSubject<boolean>(false);
+    this.executeCartAnimation = new BehaviorSubject<boolean>(false);
+    
     const isDarkMode = window.localStorage.getItem('@sos/dark-mode');
     this._isDarkMode.next(isDarkMode === 'true');
+
+    this.handleResize();
     
     window.addEventListener('resize', (): void => {
       this.handleResize();
@@ -26,7 +35,7 @@ export class EffectsService {
     return this._innerWidth;
   }
 
-  get isMobile(): boolean {
+  get isMobile(): BehaviorSubject<boolean> {
     return this._isMobile;
   }
 
@@ -34,14 +43,27 @@ export class EffectsService {
     return this._isDarkMode;
   }
 
+  get sidenavIsHidden(): BehaviorSubject<boolean> {
+    return this._sidenavIsHidden;
+  }
+
   handleDarkMode(isDarkMode: boolean): void {
-    this._isDarkMode.next(!isDarkMode);
-    window.localStorage.setItem('@sos/dark-mode', String(!isDarkMode));
+    const value = !isDarkMode;
+    this._isDarkMode.next(value);
+    window.localStorage.setItem('@sos/dark-mode', String(value));
+  }
+
+  handleSidenav(sidenavIsHidden: boolean): void {
+    this._sidenavIsHidden.next(!sidenavIsHidden);
   }
   
   private handleResize(): void {
-    this._innerWidth = window.innerWidth;
-    this._isMobile = this._innerWidth <= 650;
-    this.sidenavIsHidden = this._innerWidth <= 820;
+    const innerWidth = window.innerWidth;
+    const sidenavIsHidden = innerWidth <= this.BREAKPOINT_SIDENAV;
+    const isMobile = innerWidth <= this.BREAKPOINT_MOBILE;
+
+    this._innerWidth = innerWidth;
+    this._isMobile.next(isMobile);
+    this._sidenavIsHidden.next(sidenavIsHidden);
   }
 }
