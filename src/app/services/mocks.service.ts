@@ -5,8 +5,7 @@ import { Product } from 'src/app/models/product';
   providedIn: 'root',
 })
 export class MocksService {
-  private readonly _originalProducts: Product[] = [];
-  private _products: Product[] = [];
+  private readonly _products: Product[] = [];
 
   constructor() {
     const total = 15;
@@ -17,18 +16,8 @@ export class MocksService {
     return this._products;
   }
 
-  searchProductsByName(search: string): void {
-    search = search.trim().toLowerCase();
-
-    const filtered = this._originalProducts.filter((p): Product | void => {
-      if (p.name.toLowerCase().includes(search)) return p;
-    });
-
-    this._products = filtered;
-  }
-
   searchProductById(id: number): Product {
-    const filtered = this._originalProducts.filter((p) => p.id === id)[0];
+    const filtered = this._products.filter((p) => p.id === id)[0];
 
     if (filtered === undefined) {
       throw new Error('No product found');
@@ -38,7 +27,7 @@ export class MocksService {
   }
 
   getOtherProducts(id: number): Product[] {
-    const products = this._originalProducts.filter((p) => p.id !== id);
+    const products = this._products.filter((p) => p.id !== id);
     return products;
   }
 
@@ -53,10 +42,8 @@ export class MocksService {
         image: 'https://source.unsplash.com/random/500x800',
       };
 
-      this._originalProducts.push(product);
+      this._products.push(product);
     }
-
-    this._products = this._originalProducts;
   }
 
   private getRandomPrice(): number {

@@ -10,13 +10,13 @@
   </div>
 
   <ng-container
-    *ngIf="mocksService.products.length > 0; then productList; else noProducts"
+    *ngIf="products.length > 0; then productList; else noProducts"
   ></ng-container>
 
   <ng-template #productList>
     <div class="products-container">
       <app-product-card
-        *ngFor="let product of mocksService.products"
+        *ngFor="let product of products"
         [product]="product"
       ></app-product-card>
     </div>

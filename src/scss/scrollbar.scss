@@ -1,3 +1,22 @@
+.lock-scrollbar {
+  // overflow-y: scroll;
+  // position: fixed;
+  // width: 100%;
+  // left: 0px;
+  // right: 0px;
+  // bottom: 0px;
+  // display: none;
+
+  // &::-webkit-scrollbar {
+  //   border: 1px solid red;
+  //   display: none;
+  // }
+
+  &::-webkit-scrollbar-thumb {
+    display: none;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 20px;
 }

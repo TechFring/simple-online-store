@@ -4,7 +4,9 @@ import {
   OnInit,
   AfterViewInit,
   ViewChild,
+  HostListener,
 } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
 
 import { EffectsService } from './services/effects.service';
 
@@ -16,17 +18,24 @@ import { EffectsService } from './services/effects.service';
 export class AppComponent implements OnInit, AfterViewInit {
   public title = 'simple-online-store';
   private sidenavIsShowing: boolean;
+  private cartShoppingIsShowing: boolean;
+
+  private lockX: number;
+  private lockY: number;
 
   @ViewChild('content') content: ElementRef;
 
-  constructor(public effectsService: EffectsService) {}
+  constructor(private router: Router, public effectsService: EffectsService) {}
 
   ngOnInit(): void {
+    this.updateScrollLocks();
+    this.observeRoutes();
     this.observeDarkMode();
   }
 
   ngAfterViewInit(): void {
-    this.observeSidenavIsShow();
+    this.observeSidenavIsShowing();
+    this.observeCartShoppingIsShowing();
   }
 
   /* EVENTS */
@@ -34,9 +43,30 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (this.sidenavIsShowing) {
       this.effectsService.handleSidenav(true);
     }
+
+    if (this.cartShoppingIsShowing) {
+      this.effectsService.handleCartShopping(true);
+    }
   }
 
+  @HostListener('window:scroll')
+  onWindowScroll = (): void => {
+    if (document.body.classList.contains('lock-scrollbar')) {
+      window.scrollTo(this.lockX, this.lockY);
+    } else {
+      this.updateScrollLocks();
+    }
+  };
+
   /* OBSERVABLES */
+  private observeRoutes(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.onClickBlur();
+      }
+    });
+  }
+
   private observeDarkMode(): void {
     this.effectsService.isDarkMode.subscribe((isDarkMode) => {
       if (isDarkMode) {
@@ -47,20 +77,39 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
 
-  private observeSidenavIsShow(): void {
+  private observeSidenavIsShowing(): void {
     this.effectsService.sidenavIsShowing.subscribe((isShowing) => {
       window.setTimeout(() => {
         this.sidenavIsShowing = isShowing;
-        const nativeElement = this.content.nativeElement;
-
-        if (isShowing) {
-          nativeElement.classList.add('blur');
-          document.body.style.overflowY = 'hidden';
-        } else {
-          nativeElement.classList.remove('blur');
-          document.body.style.overflowY = 'auto';
-        }
-      }, 100);
+        this.handleBodyNativeElement(isShowing);
+      }, 50);
     });
+  }
+
+  private observeCartShoppingIsShowing(): void {
+    this.effectsService.cartShoppingIsShowing.subscribe((isShowing) => {
+      window.setTimeout(() => {
+        this.cartShoppingIsShowing = isShowing;
+        this.handleBodyNativeElement(isShowing);
+      }, 50);
+    });
+  }
+
+  /* SHARE */
+  private handleBodyNativeElement(isShowing: boolean): void {
+    const nativeElement = this.content.nativeElement;
+
+    if (isShowing) {
+      nativeElement.classList.add('blur');
+      document.body.classList.add('lock-scrollbar');
+    } else {
+      nativeElement.classList.remove('blur');
+      document.body.classList.remove('lock-scrollbar');
+    }
+  }
+
+  private updateScrollLocks(): void {
+    this.lockX = window.scrollX;
+    this.lockY = window.scrollY;
   }
 }

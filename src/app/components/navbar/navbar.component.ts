@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   // public inputSearch: string;
   public isDarkMode: boolean;
   public sidenavIsShowing: boolean;
+  public cartShoppingIsShowing: boolean;
   public executeCartAnimation: boolean;
 
   @ViewChild('iconDarkMode') iconDarkMode: ElementRef;
@@ -38,6 +39,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.observeExecuteCartAnimation();
     this.observeNavbarIsExpanded();
     this.observeSidenavIsShowing();
+    this.observeCartShoppingIsShowing();
   }
 
   /* OBSERVABLES */
@@ -75,6 +77,12 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   private observeSidenavIsShowing(): void {
     this.effectsService.sidenavIsShowing.subscribe((isShowing) => {
       this.sidenavIsShowing = isShowing;
+    });
+  }
+
+  private observeCartShoppingIsShowing(): void {
+    this.effectsService.cartShoppingIsShowing.subscribe((isShowing) => {
+      this.cartShoppingIsShowing = isShowing;
     });
   }
 }

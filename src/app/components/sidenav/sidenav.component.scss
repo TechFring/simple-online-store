@@ -1,19 +1,15 @@
 @import "../../../styles.scss";
 
-/* SIDENAV */
 .sidenav {
-  position: fixed;
-  top: 0;
   left: 0;
-  overflow-y: hidden;
-  z-index: 1000;
 
-  transition: margin-left 0.2s;
-  
-  padding: 19px 16px 30px;
-  width: 240px;
-  height: 100%;
-  background-color: $white;
+  li + li {
+    margin-top: 27.42px;
+  }
+}
+
+.sidenav-hide {
+  margin-left: -240px;
 }
 
 .explore {
@@ -21,29 +17,8 @@
   margin: 40px 0px 24px;
 }
 
-/* BUTTON TOGGLE */
-.sidenav-hide {
-  margin-left: -240px;
-}
-
-/* NAVIGATION */
 .icon {
   margin-right: 10.1px;
-}
-
-nav ul {
-  display: flex;
-  flex-direction: column;
-}
-
-nav li {
-  display: flex;
-  align-items: center;
-  list-style: none;
-
-  & + li {
-    margin-top: 27.42px;
-  }
 }
 
 .help-item {

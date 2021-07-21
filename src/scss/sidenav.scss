@@ -1,0 +1,42 @@
+.sidenav {
+  position: fixed;
+  top: 0;
+  overflow-y: hidden;
+  z-index: 1000;
+
+  transition: margin 0.2s;
+
+  padding: 19px 16px 30px;
+  width: 240px;
+  height: 100%;
+  background-color: $white;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    list-style: none;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  i {
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+  
+  i + * {
+    margin-left: 40px;
+  }
+  
+  * + i {
+    margin-left: 40px;
+  }
+}

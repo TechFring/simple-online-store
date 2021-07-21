@@ -13,6 +13,7 @@ export class EffectsService {
   private _isDarkMode: BehaviorSubject<boolean>;
   private _isMobile: BehaviorSubject<boolean>;
   private _sidenavIsShowing: BehaviorSubject<boolean>;
+  private _cartShoppingIsShowing: BehaviorSubject<boolean>;
   private _navbarIsExpanded: BehaviorSubject<boolean>;
   public executeCartAnimation: BehaviorSubject<boolean>;
 
@@ -20,19 +21,20 @@ export class EffectsService {
     this._isDarkMode = new BehaviorSubject<boolean>(false);
     this._isMobile = new BehaviorSubject<boolean>(false);
     this._sidenavIsShowing = new BehaviorSubject<boolean>(false);
+    this._cartShoppingIsShowing = new BehaviorSubject<boolean>(false);
     this._navbarIsExpanded = new BehaviorSubject<boolean>(false);
     this.executeCartAnimation = new BehaviorSubject<boolean>(false);
-    
+
     const isDarkMode = window.localStorage.getItem('@sos/dark-mode');
     this._isDarkMode.next(isDarkMode === 'true');
 
     this.handleResize();
-    
+
     window.addEventListener('resize', (): void => {
       this.handleResize();
     });
   }
-  
+
   get innerWidth(): number {
     return this._innerWidth;
   }
@@ -49,6 +51,10 @@ export class EffectsService {
     return this._sidenavIsShowing;
   }
 
+  get cartShoppingIsShowing(): BehaviorSubject<boolean> {
+    return this._cartShoppingIsShowing;
+  }
+
   get navbarIsExpanded(): BehaviorSubject<boolean> {
     return this._navbarIsExpanded;
   }
@@ -62,10 +68,14 @@ export class EffectsService {
   handleSidenav(sidenavIsShowing: boolean): void {
     this._sidenavIsShowing.next(!sidenavIsShowing);
   }
-  
+
+  handleCartShopping(cartShoppingIsShowing: boolean): void {
+    this._cartShoppingIsShowing.next(!cartShoppingIsShowing);
+  }
+
   private handleResize(): void {
     const innerWidth = window.innerWidth;
-    const navbarIsExpanded = innerWidth <= this.BREAKPOINT_NAV
+    const navbarIsExpanded = innerWidth <= this.BREAKPOINT_NAV;
     const isMobile = innerWidth <= this.BREAKPOINT_MOBILE;
 
     this._innerWidth = innerWidth;

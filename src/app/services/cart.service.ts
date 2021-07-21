@@ -48,8 +48,28 @@ export class CartService {
     this.handleAnimation();
   }
 
-  private calculateTotalAmount(price: number): void {
-    this._totalAmount += price;
+  removeToCart(productId: number): void {
+    let total = 0;
+
+    const filtered = this._cart.filter((product): ProductCart | void => {
+      if (product.id !== productId) {
+        return product;
+      } else {
+        total += product.price * product.quantity;
+        return;
+      }
+    });
+
+    this._cart = filtered;
+    this.calculateTotalAmount(total, true);
+  }
+
+  private calculateTotalAmount(price: number, isRemove?: boolean): void {
+    if (isRemove) {
+      this._totalAmount -= price;
+    } else {
+      this._totalAmount += price;
+    }
   }
 
   private handleAnimation(): void {

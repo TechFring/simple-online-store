@@ -1,5 +1,5 @@
 <header>
-  <div class="container-logo">
+  <div class="brand">
     <i
       class="fas fa-bars"
       (click)="effectsService.handleSidenav(sidenavIsShowing)"
@@ -35,15 +35,19 @@
       </nav>
     </div>
 
-    <div
-      class="container-dark-mode"
+    <i
+      class="far fa-lightbulb"
       (click)="effectsService.handleDarkMode(isDarkMode)"
-    >
-      <i #iconDarkMode class="far fa-lightbulb"></i>
-    </div>
+      #iconDarkMode
+    ></i>
 
-    <div class="dropdown">
-      <i class="fas fa-shopping-cart" #iconCart></i>
+    <i
+      class="fas fa-shopping-cart"
+      (click)="effectsService.handleCartShopping(cartShoppingIsShowing)"
+      #iconCart
+    ></i>
+
+    <!-- <div class="dropdown">
 
       <div>
         <ul>
@@ -70,6 +74,6 @@
           </ng-template>
         </ul>
       </div>
-    </div>
+    </div> -->
   </div>
 </header>

@@ -4,7 +4,7 @@ body.dark-mode {
   aside,
   input,
   nav,
-  .dropdown ul {
+  ul {
     background: $black !important;
     color: $gray-light !important;
   }
@@ -17,7 +17,7 @@ body.dark-mode {
   a,
   i,
   input,
-  .dropdown ul {
+  ul {
     color: $white !important;
   }
 }

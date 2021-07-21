@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { EffectsService } from 'src/app/services/effects.service';
 import { MocksService } from 'src/app/services/mocks.service';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-main',
@@ -10,6 +11,8 @@ import { MocksService } from 'src/app/services/mocks.service';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
+  private originalProducts: Product[];
+  public products: Product[];
   public inputSearch: string;
 
   constructor(
@@ -18,10 +21,19 @@ export class MainComponent implements OnInit {
     public mocksService: MocksService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.originalProducts = this.mocksService.products;
+    this.products = this.mocksService.products;
+  }
 
   /* EVENTS */
   onChangeSearch(): void {
-    this.mocksService.searchProductsByName(this.inputSearch);
+    const search = this.inputSearch.trim().toLowerCase();
+
+    const filtered = this.originalProducts.filter((p): Product | void => {
+      if (p.name.toLowerCase().includes(search)) return p;
+    });
+
+    this.products = filtered;
   }
 }

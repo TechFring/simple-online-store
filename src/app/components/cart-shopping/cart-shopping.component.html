@@ -1,1 +1,42 @@
-<p>cart-shopping works!</p>
+<aside class="sidenav sidenav-hide" #aside>
+  <div class="brand">
+    <h3>Cart</h3>
+
+    <i
+      class="fas fa-times"
+      (click)="effectsService.handleCartShopping(cartShoppingIsShowing)"
+    ></i>
+  </div>
+  
+  <ng-container *ngIf="cartService.cart.length > 0; then products; else empty;"></ng-container>
+
+  <ng-template #products>
+    <ul>
+      <li *ngFor="let product of cartService.cart" @fadeInOut>
+        <img
+          [src]="product.image"
+          [alt]="product.name"
+          routerLink="/details/{{ product.id }}"
+        />
+  
+        <div class="item-info">
+          <p routerLink="/details/{{ product.id }}">
+            {{ product.name }} ({{ product.quantity }}x)
+          </p>
+  
+          <button (click)="cartService.removeToCart(product.id)">Remove</button>
+        </div>
+      </li>
+    </ul>
+  </ng-template>
+
+  <ng-template #empty>
+    <div class="empty" @fadeInOut>
+      <p>Empty</p>
+    </div>
+  </ng-template>
+
+  <h2 class="total-amount">
+    Total amount: {{ cartService.totalAmount | currency }}
+  </h2>
+</aside>
