@@ -21,6 +21,10 @@
   box-sizing: border-box;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 a {
   text-decoration: none;
   text-underline-offset: 7px;
