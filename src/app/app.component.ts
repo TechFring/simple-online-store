@@ -4,7 +4,6 @@ import {
   OnInit,
   AfterViewInit,
   ViewChild,
-  HostListener,
 } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 
@@ -20,15 +19,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   private sidenavIsShowing: boolean;
   private cartShoppingIsShowing: boolean;
 
-  private lockX: number;
-  private lockY: number;
 
   @ViewChild('content') content: ElementRef;
 
   constructor(private router: Router, public effectsService: EffectsService) {}
 
   ngOnInit(): void {
-    this.updateScrollLocks();
     this.observeRoutes();
     this.observeDarkMode();
   }
@@ -48,15 +44,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.effectsService.handleCartShopping(true);
     }
   }
-
-  @HostListener('window:scroll')
-  onWindowScroll = (): void => {
-    if (document.body.classList.contains('lock-scrollbar')) {
-      window.scrollTo(this.lockX, this.lockY);
-    } else {
-      this.updateScrollLocks();
-    }
-  };
 
   /* OBSERVABLES */
   private observeRoutes(): void {
@@ -106,10 +93,5 @@ export class AppComponent implements OnInit, AfterViewInit {
       nativeElement.classList.remove('blur');
       document.body.classList.remove('lock-scrollbar');
     }
-  }
-
-  private updateScrollLocks(): void {
-    this.lockX = window.scrollX;
-    this.lockY = window.scrollY;
   }
 }
