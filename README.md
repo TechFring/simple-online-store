@@ -9,8 +9,6 @@ SIMPLE ONLINE STORE
 
 - ✔️ Angular
 
-- ✔️ TypeScript
-
 <br />
 <br />
 
